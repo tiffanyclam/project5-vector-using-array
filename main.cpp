@@ -144,12 +144,6 @@ int main(){
         cout << "At s4[3]: " << s4[3] << endl;
         cout << "-------end of detail-----" << endl;
         
-//        Vector<string> s5(s4);
-//        s5.push_back("pgl");
-//        s5.assign(3, "mov");
-//        s5.printInternal();
-//        s5 = s4;
-//        s5.printInternal();
     }
     
     catch (out_of_range &e){
