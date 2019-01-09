@@ -63,14 +63,8 @@ Vector<T>::Vector(const unsigned sz, const T &object) throw (bad_alloc){
     this->cap = sz;
 }
 
-template <typename T> //The copy constructor should call operator=.
+template <typename T> 
 Vector<T>::Vector(const Vector<T> &vector) throw (bad_alloc){
-//    cap = vector.cap;
-//    contents = new T[cap];
-//    sz = 0;
-//    for (unsigned i = 0; i < vector.sz; i++)
-//        contents[i] = vector.contents[i];
-//    sz = vector.sz;
     sz = 0;
     cap = 0;
     currents = 0;
@@ -82,7 +76,7 @@ Vector<T>::~Vector(){
     delete [] contents;
 }
 
-template <typename T> // You don't need to check if i < 0.  It can't be.  Why?
+template <typename T> 
 void Vector<T>::assign(const unsigned i, const T &object) throw (out_of_range){
     if (i >= sz)
         throw out_of_range
@@ -120,7 +114,6 @@ void Vector<T>::increaseCapacity() throw (bad_alloc){
     sz = oldSize;
 }
 
-// In insert, if sz == 0, it is possible for !empty to be true? If sz != 0, is it possible for !empty to be false?
 template <typename T>
 void Vector<T>::insert(const unsigned i, const T& object)throw (bad_alloc, out_of_range){
     if (i >= sz)
@@ -136,7 +129,7 @@ void Vector<T>::insert(const unsigned i, const T& object)throw (bad_alloc, out_o
     }
 }
 
-template <typename T> //In operator=, clear isn't doing anything for you.  delete [] contents is the important operation.
+template <typename T> 
 const Vector<T> &Vector<T>::operator=(const Vector<T> &vector) throw (bad_alloc){
     if (this != &vector){
         if (!empty())
@@ -169,7 +162,6 @@ void Vector<T>::push_back(const T &object) throw (bad_alloc){
     sz++;
 }
 
-// It looks like remove is having trouble removing at position 0.  Test 50. Then at position 4, Test 54.  It's blowing up on line 183.  I'm not seeing the problem.
 template <typename T>
 void Vector<T>::remove(const unsigned i) throw (out_of_range){
     if (i > (sz-1))
